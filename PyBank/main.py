@@ -1,50 +1,50 @@
 import os
 import csv
 
-# input path to the CSV file 
-csv_path= '/Users/katieloosararian/Class_Requirements/Module 3/Starter_Code/PyBank/Resources/budget_data.csv'
+# Path to the CSV file
+csv_path = '/Users/katieloosararian/Class_Requirements/Module 3/Starter_Code/PyBank/Resources/budget_data.csv'
 
-#initializing the variables 
-total_months = 0 
+# Initialize variables
+total_months = 0
 net_profit_losses = 0
 changes = []
 greatest_increase = ['', 0]
-greatest_decrease = ['',0] 
+greatest_decrease = ['', 0]
 
-#Read on csv file
+# Read the CSV file
 with open(csv_path, 'r') as file:
-    csv_reader = csv.reader(file,delimiter= ',')
+    csv_reader = csv.reader(file, delimiter=',')
     header = next(csv_reader)
 
-    #iterate the rows over
+    # Iterate over the rows
     for row in csv_reader:
-        #counting the # of months
-        total_months +=1
+        # Count the number of months
+        total_months += 1
 
-        #calculate the net total of profit/losses
+        # Calculate the net total amount of "Profit/Losses"
         net_profit_losses += int(row[1])
 
-        #calculate the changes in profit/ losses over the entire time period
-        previous_profit = int(row[1])
-
+        # Calculate the changes in "Profit/Losses" over the entire period
         if total_months > 1:
             current_change = int(row[1]) - previous_profit
             changes.append(current_change)
 
-
-            #find greatest invcrease in profits
+            # Find the greatest increase in profits
             if current_change > greatest_increase[1]:
                 greatest_increase = [row[0], current_change]
 
-          
-#calculate the average change, set variable
-average_change =  sum(changes) / len(changes)
+            # Find the greatest decrease in profits
+            if current_change < greatest_decrease[1]:
+                greatest_decrease = [row[0], current_change]
 
-# print out the results 
+        previous_profit = int(row[1])
+
+# Calculate the average change
+average_change = sum(changes) / len(changes)
+
+# Print the results
 print(f"Total number of months: {total_months}")
 print(f"Net total amount of Profit/Losses: ${net_profit_losses}")
 print(f"Average change in Profit/Losses: ${average_change:.2f}")
 print(f"Greatest increase in profits: {greatest_increase[0]} (${greatest_increase[1]})")
 print(f"Greatest decrease in profits: {greatest_decrease[0]} (${greatest_decrease[1]})")
-
-
