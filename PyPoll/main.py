@@ -3,6 +3,7 @@ import csv
 
 #CSV file path with related dataset
 csv_path = '/Users/katieloosararian/Class_Requirements/Module 3/Starter_Code/PyPoll/Resources/election_data.csv'
+csvpath = os.path.join ('Resources', 'election_data.csv') 
 
 # variables 
 total_votes= 0
