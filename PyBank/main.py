@@ -3,6 +3,7 @@ import csv
 
 # Path to the CSV file
 csv_path = '/Users/katieloosararian/Class_Requirements/Module 3/Starter_Code/PyBank/Resources/budget_data.csv'
+csvpath = os.path.join ('Resources', 'budget_data.csv') 
 
 # Initialize variables
 total_months = 0
